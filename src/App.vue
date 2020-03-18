@@ -45,6 +45,10 @@
       v-on:changeLikes="changeLikes"
       v-on:addPost="addPost"
       v-on:addNewsPost="addNewsPost"
+      v-on:changeTitle="changeTitle"
+      v-on:changeThumbnail="changeThumbnail"
+      v-on:changeDate="changeDate"
+      v-on:changeNewsContent="changeNewsContent"
     />
     <footer>
       Github:
@@ -129,7 +133,7 @@ export default {
         likes: 0,
         isCommented: false,
         isLiked: false,
-        isResqeaked: false
+        isResqeaked: false,
       };
 
       this.posts.push(newPost);
@@ -145,13 +149,13 @@ export default {
         thumbnail: "https://via.placeholder.com/300x200",
         date: "JANUARY 1, 1970",
         content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ligula id dolor eleifend molestie. Nullam tempor ante vitae dui dictum, eget rutrum purus vehicula."
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ligula id dolor eleifend molestie. Nullam tempor ante vitae dui dictum, eget rutrum purus vehicula.",
       };
 
       this.news.push(newNewsPost);
 
       this.selectedNewsPostValue = id;
-    }
+    },
   },
   data: function() {
     return {
@@ -171,7 +175,7 @@ export default {
           likes: 17,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 1,
@@ -186,7 +190,7 @@ export default {
           likes: 2,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 2,
@@ -201,7 +205,7 @@ export default {
           likes: 7,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 3,
@@ -216,7 +220,7 @@ export default {
           likes: 43,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 4,
@@ -231,7 +235,7 @@ export default {
           likes: 32,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 5,
@@ -246,7 +250,7 @@ export default {
           likes: 9,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 6,
@@ -260,7 +264,7 @@ export default {
           likes: 12,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 7,
@@ -275,7 +279,7 @@ export default {
           likes: 124,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
+          isResqeaked: false,
         },
         {
           id: 8,
@@ -290,8 +294,8 @@ export default {
           likes: 8,
           isCommented: false,
           isLiked: false,
-          isResqeaked: false
-        }
+          isResqeaked: false,
+        },
       ],
       news: [
         {
@@ -302,7 +306,7 @@ export default {
             "https://www.vbjusa.com/wp-content/uploads/2018/05/Grubhub-1.png",
           date: "MARCH 13, 2020",
           content:
-            "Online food delivery company GrubHub Inc said on Friday it will temporarily suspend collecting commission fees of up to $100 million from independent U.S. restaurants hit by the coronavirus outbreak."
+            "Online food delivery company GrubHub Inc said on Friday it will temporarily suspend collecting commission fees of up to $100 million from independent U.S. restaurants hit by the coronavirus outbreak.",
         },
         {
           id: 1,
@@ -312,7 +316,7 @@ export default {
             "https://specials-images.forbesimg.com/imageserve/1214132368/960x0.jpg?fit=scale",
           date: "MARCH 13, 2020",
           content:
-            "Bitcoin surged by more than a fifth on Friday amid high volatility across rebounding global markets, reversing some of its heavy losses from a day earlier but still leaving the cryptocurrency down nearly 30% since the start of the week."
+            "Bitcoin surged by more than a fifth on Friday amid high volatility across rebounding global markets, reversing some of its heavy losses from a day earlier but still leaving the cryptocurrency down nearly 30% since the start of the week.",
         },
         {
           id: 2,
@@ -322,7 +326,7 @@ export default {
             "https://a.slack-edge.com/80588/marketing/img/feature/partner-zoom/img-slack-zoom-header-desktop.png",
           date: "MARCH 13, 2020",
           content:
-            "Global downloads of business apps including Tencent Conference, WeChat Work, Zoom, Microsoft Teams and Slack have risen nearly five fold since the start of the year, data showed, as the coronavirus outbreak changes how corporations work."
+            "Global downloads of business apps including Tencent Conference, WeChat Work, Zoom, Microsoft Teams and Slack have risen nearly five fold since the start of the year, data showed, as the coronavirus outbreak changes how corporations work.",
         },
         {
           id: 3,
@@ -332,7 +336,7 @@ export default {
             "https://cdn.vox-cdn.com/thumbor/YkyvyV5OYH9IL-BAO5sTk9Flp70=/0x0:5568x3712/1200x800/filters:focal(2347x845:3237x1735)/cdn.vox-cdn.com/uploads/chorus_image/image/66499694/1206996881.jpg.0.jpg",
           date: "MARCH 13, 2020",
           content:
-            "Corporate America joined the fight against the spread of coronavirus on Friday, as President Donald Trump and executives announced that Google would offer a website to help people determine whether they needed tests and retailers would set up drive-through testing in parking lots."
+            "Corporate America joined the fight against the spread of coronavirus on Friday, as President Donald Trump and executives announced that Google would offer a website to help people determine whether they needed tests and retailers would set up drive-through testing in parking lots.",
         },
         {
           id: 4,
@@ -342,11 +346,11 @@ export default {
             "https://timesofindia.indiatimes.com/thumb/msid-69238801,width-1200,height-900,resizemode-4/.jpg",
           date: "MARCH 14, 2020",
           content:
-            "Apple Inc said it is closing all its retail stores, except those in Greater China, for the next two weeks to minimize the risk of coronavirus transmission."
-        }
-      ]
+            "Apple Inc said it is closing all its retail stores, except those in Greater China, for the next two weeks to minimize the risk of coronavirus transmission.",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

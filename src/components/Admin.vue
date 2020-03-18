@@ -2,16 +2,16 @@
   <div class="adminPage">
     <div class="addButton">
       <div class="buttonText">Add a post:</div>
-      <button @click="addPost">+</button>
+      <button v-on:click="addPost">+</button>
     </div>
 
     <label for="posts">Edit a post (Select ID):</label>
 
     <select id="postSelect" v-model="postSelected" @change="update">
-      <option v-for="post in posts" :key="post.id">{{post.id}}</option>
+      <option v-for="post in posts" :key="post.id">{{ post.id }}</option>
     </select>
 
-    <h3>Preview Post #{{postSelected}}:</h3>
+    <h3>Preview Post #{{ postSelected }}:</h3>
     <Post :post="posts[postSelected]" />
 
     <div class="inputColumn">
@@ -49,22 +49,24 @@
       </div>
     </div>
 
-    <button @:click="savePost">Save</button>
+    <button v-on:click="savePost">Save</button>
 
     <div class="divide" />
 
     <div class="addButton">
       <div class="buttonText">Add a post:</div>
-      <button @click="addNewsPost">+</button>
+      <button v-on:click="addNewsPost">+</button>
     </div>
 
     <label for="news">Edit a news post (Select ID):</label>
 
     <select id="newsSelect" v-model="newsSelected" @change="update">
-      <option v-for="newsPost in news" :key="newsPost.id">{{newsPost.id}}</option>
+      <option v-for="newsPost in news" :key="newsPost.id">{{
+        newsPost.id
+      }}</option>
     </select>
 
-    <h3>Preview News Post #{{newsSelected}}:</h3>
+    <h3>Preview News Post #{{ newsSelected }}:</h3>
     <NewsPost :newsPost="news[newsSelected]" />
 
     <div class="inputColumn">
@@ -90,7 +92,7 @@
       </div>
     </div>
 
-    <button @click="saveNewsPost">Save</button>
+    <button v-on:click="saveNewsPost">Save</button>
   </div>
 </template>
 
@@ -102,13 +104,13 @@ export default {
   name: "Admin",
   components: {
     Post,
-    NewsPost
+    NewsPost,
   },
   props: {
     posts: Array,
     news: Array,
     selectedPostValue: Number,
-    selectedNewsPostValue: Number
+    selectedNewsPostValue: Number,
   },
   watch: {
     selectedNewsPostValue: function() {
@@ -118,7 +120,7 @@ export default {
     selectedPostValue: function() {
       this.postSelected = this.selectedPostValue;
       this.update();
-    }
+    },
   },
   data: function() {
     return {
@@ -136,7 +138,7 @@ export default {
       newsTitle: "",
       newsThumbnail: "",
       newsDate: "",
-      newsContent: ""
+      newsContent: "",
     };
   },
   computed: {
@@ -151,7 +153,7 @@ export default {
         return this.news[0];
       }
       return this.news[this.newsSelected];
-    }
+    },
   },
   methods: {
     update: function() {
@@ -176,6 +178,7 @@ export default {
       this.$emit("addNewsPost");
     },
     savePost: function() {
+      console.log("test");
       this.$emit("changeAuthor", this.postId, this.postAuthor);
       this.$emit("changeTimestamp", this.postId, this.postTimestamp);
       this.$emit("changeProfilePicture", this.postId, this.postProfilePicture);
@@ -185,12 +188,16 @@ export default {
       this.$emit("changeLikes", this.postId, this.postLikes);
     },
     saveNewsPost: function() {
-      this.$emit("change");
-    }
+      console.log("test 2");
+      this.$emit("changeTitle", this.newsId, this.newsTitle);
+      this.$emit("changeThumbnail", this.newsId, this.newsThumbnail);
+      this.$emit("changeDate", this.newsId, this.newsDate);
+      this.$emit("changeNewsContent", this.newsId, this.newsContent);
+    },
   },
   mounted() {
     this.update();
-  }
+  },
 };
 </script>
 
